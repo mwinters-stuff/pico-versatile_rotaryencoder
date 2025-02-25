@@ -1,10 +1,11 @@
 #include <Versatile_RotaryEncoder.h>
-
+#include "pico/stdlib.h"
+#include <stdio.h>
 // SET READING PINS ACCORDINGLY TO YOUR ENCODER TO BOARD CONNECTIONS
 // Set here your encoder reading pins (Ex.: EC11 with breakout board)
-#define clk 17  // (A3)
-#define dt 16   // (A2)
-#define sw 18   // (A4)
+#define clk 20 
+#define dt 21
+#define sw 14
 
 // Functions prototyping to be handled on each Encoder Event
 void handleRotate(int8_t rotation);
@@ -23,7 +24,8 @@ Versatile_RotaryEncoder *versatile_encoder;
 
 void setup() {
 
-    Serial.begin(9600);
+    stdio_init_all();
+    
 	versatile_encoder = new Versatile_RotaryEncoder(clk, dt, sw);
 
     // Load to the encoder all nedded handle functions here (up to 9 functions)
@@ -39,7 +41,7 @@ void setup() {
     versatile_encoder->setHandlePressRotateRelease(handlePressRotateRelease);
     versatile_encoder->setHandleHeldRotateRelease(handleHeldRotateRelease);
 
-    Serial.println("Ready!");
+    printf("Ready!\n");
 
     // set your own defualt values (optional)
     // versatile_encoder->setInvertedSwitch(true); // inverts the switch behaviour from HIGH to LOW to LOW to HIGH
@@ -59,56 +61,64 @@ void loop() {
 
 }
 
+int main(){
+    setup();
+    while(1){
+        loop();
+    }
+    return 0;
+}
+
 // Implement your functions here accordingly to your needs
 
 void handleRotate(int8_t rotation) {
-	Serial.print("#1 Rotated: ");
+	printf("#1 Rotated: ");
     if (rotation > 0)
-	    Serial.println("Right");
+	    printf("Right\n");
     else
-	    Serial.println("Left");
+	    printf("Left\n");
 }
 
 void handlePressRotate(int8_t rotation) {
-	Serial.print("#2 Pressed and rotated: ");
+	printf("#2 Pressed and rotated: ");
     if (rotation > 0)
-	    Serial.println("Right");
+	    printf("Right\n");
     else
-	    Serial.println("Left");
+	    printf("Left\n");
 }
 
 void handleHeldRotate(int8_t rotation) {
-	Serial.print("#3 Held and rotated: ");
+	printf("#3 Held and rotated: ");
     if (rotation > 0)
-	    Serial.println("Right");
+	    printf("Right\n");
     else
-	    Serial.println("Left");
+	    printf("Left\n");
 }
 
 void handlePress() {
-	Serial.println("#4.1 Pressed");
+	printf("#4.1 Pressed\n");
 }
 
 void handleDoublePress() {
-	Serial.println("#4.2 Double Pressed");
+	printf("#4.2 Double Pressed\n");
 }
 
 void handlePressRelease() {
-	Serial.println("#5 Press released");
+	printf("#5 Press released\n");
 }
 
 void handleLongPress() {
-	Serial.println("#6 Long pressed");
+	printf("#6 Long pressed\n");
 }
 
 void handleLongPressRelease() {
-	Serial.println("#7 Long press released");
+	printf("#7 Long press released\n");
 }
 
 void handlePressRotateRelease() {
-	Serial.println("#8 Press rotate released");
+	printf("#8 Press rotate released\n");
 }
 
 void handleHeldRotateRelease() {
-	Serial.println("#9 Held rotate released");
+	printf("#9 Held rotate released\n");
 }

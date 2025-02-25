@@ -13,11 +13,13 @@
 #ifndef VERSATILE_ROTARYENCODER_H_INCLUDED
 #define VERSATILE_ROTARYENCODER_H_INCLUDED
 
-#include <Arduino.h>
+#include <stdint.h>
+#include <functional>
+
 /**
  * Decomment below line to enable std::function as callbacks
 */
-//#define USE_STD_FUNCTION
+#define USE_STD_FUNCTION
 
 /**
  * Decomment below line to use internal pullup resistor
