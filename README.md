@@ -1,5 +1,6 @@
-## **Versatile_RotaryEncoder Library V1.3.1** for Arduino
+## **Versatile_RotaryEncoder Library V1.3.1** for Pico CPP SDK
 **Written by:** _Rui Seixas Monteiro_.
+**Pico SDK:** _Mathew Winters_.
 
 ## Installation - CMakeLists.txt
 
@@ -16,6 +17,7 @@ FetchContent_Declare(
   GIT_REPOSITORY    https://github.com/mwinters-stuff/pico-versatile_rotaryencoder.git
   GIT_TAG           main
   GIT_SHALLOW       1
+  SOURCE_DIR        ${CMAKE_CURRENT_SOURCE_DIR}/cmake
 )
 
 FetchContent_MakeAvailable(versatile_rotaryencoder)
