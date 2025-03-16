@@ -17,7 +17,7 @@ FetchContent_Declare(
   GIT_REPOSITORY    https://github.com/mwinters-stuff/pico-versatile_rotaryencoder.git
   GIT_TAG           main
   GIT_SHALLOW       1
-  SOURCE_DIR        ${CMAKE_CURRENT_SOURCE_DIR}/cmake
+  SOURCE_SUBDIR     cmake
 )
 
 FetchContent_MakeAvailable(versatile_rotaryencoder)
